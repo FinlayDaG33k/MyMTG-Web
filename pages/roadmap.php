@@ -20,13 +20,23 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 			<td>04-2017</td>
 			<td>
 				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: 20%"></div>
+					<div class="progress-bar progress-bar-warning" style="width: 20%"></div>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>What trade? THAT TRADE!</td>
 			<td>A little ledger for trades, so you can keep track of when you traded what, what you got for it, and the status!</td>
+			<td>2017</td>
+			<td>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: 0%"></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>Hey babe, can I get your number? ;) </td>
+			<td>The ability to add your DCI number to your profile so you can quickly find it!</td>
 			<td>2017</td>
 			<td>
 				<div class="progress">
@@ -44,16 +54,7 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 				</div>
 			</td>
 		</tr>
-		<tr>
-      <td>Automagic Sorting</td>
-      <td>Automagically Sort the Inventory and Wants in the Database</td>
-			<td>2017</td>
-      <td>
-				<div class="progress">
-				  <div class="progress-bar progress-bar-success" style="width: 0%"></div>
-				</div>
-			</td>
-    </tr>
+
 		<tr>
 			<td>Own Identity</td>
 			<td>Get a domain, specifically for MyMTG</td>
@@ -64,5 +65,15 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 				</div>
 			</td>
 		</tr>
+		<tr>
+      <td>Automagic Sorting</td>
+      <td>Automagically Sort the Inventory and Wants in the Database</td>
+			<td>2017</td>
+      <td>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+				</div>
+			</td>
+    </tr>
   </tbody>
 </table>

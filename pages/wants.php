@@ -24,7 +24,7 @@
 					let data = $.parseJSON(json);
 					switch(data.code){
 						case 404:
-							<?= sendNotification("<strong>Invalid Captcha!</strong><br />Unfortunately, our goblins had no clue what card you wanted to add. Please try again!","danger"); ?>
+							<?= sendNotification("<strong>Invalid Card!</strong><br />Unfortunately, our goblins had no clue what card you wanted to add. Please try again!","danger"); ?>
 							break;
 						case 500:
 							<?= sendNotification("<strong>Well ehm...</strong><br />Unfortunately, our goblins lost their way. Please try again!","danger"); ?>

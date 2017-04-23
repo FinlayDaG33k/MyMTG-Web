@@ -24,7 +24,7 @@
 					let data = $.parseJSON(json);
 					switch(data.code){
 						case 404:
-							<?= sendNotification("<strong>Invalid Captcha!</strong><br />Unfortunately, our goblins had no clue what card you wanted to add. Please try again!","danger"); ?>
+							<?= sendNotification("<strong>Invalid Card!</strong><br />Unfortunately, our goblins had no clue what card you wanted to add. Please try again!","danger"); ?>
 							break;
 						case 500:
 							<?= sendNotification("<strong>Well ehm...</strong><br />Unfortunately, our goblins lost their way. Please try again!","danger"); ?>
@@ -148,7 +148,18 @@
 								<form id="updateCard" class="form-horizontal">
 									<tr>
 										<td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name=<?= htmlentities($value['Name']); ?>" target="_blank"><?= htmlentities($value['Name']); ?></a></td>
-										<td><span class="badge"><?php if($value['Set'] != "MPS"){ ?><img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png"><?php }else{ ?><img src="http://www.bazaarofmagic.nl/images/editions/mps_kld.png"><?php } ?> <?= htmlentities($value['Set']); ?></span></td>
+										<td>
+											<span class="badge">
+												<?php if($value['Set'] == "MPS"){ ?>
+													<img src="http://www.bazaarofmagic.nl/images/editions/mps_kld.png">
+												<?php }elseif($value['Set'] == "WPN"){ ?>
+													<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
+												<?php }else{ ?>
+													<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+												<?php } ?>
+												<?= htmlentities($value['Set']); ?>
+											</span>
+										</td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Foils']); ?>" name="Foils"></td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Non-Foils']); ?>" name="Non-Foils"></td>
 										<td>
