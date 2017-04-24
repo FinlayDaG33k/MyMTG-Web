@@ -14,7 +14,6 @@
 			let Userdata = $.parseJSON($.cookie('Userdata'));
 			Userdata = Userdata.message;
 			let data = $(this).serialize() +'&'+$.param({'Authtoken':Userdata.Authtoken})+'&'+$.param({'Username':Userdata.Username});
-			console.log(data);
 			$.ajax({
 				type: "POST",
 				url: "https://mymtg-api.finlaydag33k.nl/index.php",
@@ -30,11 +29,11 @@
 							<?= sendNotification("<strong>Well ehm...</strong><br />Unfortunately, our goblins lost their way. Please try again!","danger"); ?>
 							break;
 						case 200:
+							<?= sendNotification("<strong>Hooraay!</strong><br />Our goblins returned with the news that everything went right! Some actions require you to refresh the page to see changes.","success"); ?>
+							$('#table-inventory > tbody:last-child').append('<tr><td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name='+$('input[id="addCard-Name"]').val()+'" target="_blank">'+$('input[id="addCard-Name"]').val()+'</a></td><td><span class="badge"><img src="http://www.bazaarofmagic.nl/images/editions/'+$('select[id="select"]').val()+'_c.png">'+$('select[id="select"]').val()+'</span></td><td></td><td></td><td></td><td></td></tr>');
 							$('input[id="addCard-NonFoils"]').val("0");
 							$('input[id="addCard-Foils"]').val("0");
 							$('input[id="addCard-Name"]').val("");
-							<?= sendNotification("<strong>Hooraay!</strong><br />Our goblins returned with the news that everything went right! Some actions require you to refresh the page to see changes.","success"); ?>
-
 							break;
 					}
 				}
