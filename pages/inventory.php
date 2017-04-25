@@ -166,6 +166,7 @@
 														}
 													}
 												?>
+												<?= htmlentities($value['Set']); ?>
 											</span>
 										</td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Foils']); ?>" name="Foils"></td>
