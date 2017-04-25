@@ -104,7 +104,6 @@
 							</td>
 							<td>
 								<div class="form-group">
-
 									<select class="form-control js-example-basic-single js-states" name="Set" id="select">
 					          <?php
 											$url = "https://mymtg-api.finlaydag33k.nl/index.php?action=listSets";
@@ -149,14 +148,24 @@
 										<td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name=<?= htmlentities($value['Name']); ?>" target="_blank"><?= htmlentities($value['Name']); ?></a></td>
 										<td>
 											<span class="badge">
-												<?php if($value['Set'] == "MPS"){ ?>
-													<img src="http://www.bazaarofmagic.nl/images/editions/mps_kld.png">
-												<?php }elseif($value['Set'] == "WPN"){ ?>
-													<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
-												<?php }else{ ?>
-													<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
-												<?php } ?>
-												<?= htmlentities($value['Set']); ?>
+												<?php
+													if(strpos($value['Set'], 'MPS:') !== FALSE){
+														$set = explode (':',$value['Set']);
+														?>
+															<img src="http://www.bazaarofmagic.nl/images/editions/mps_<?= trim(htmlentities($set[1])); ?>.png">
+														<?php
+													}else{
+														if($value['Set'] == "WPN"){
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
+															<?php
+														}else{
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+															<?php
+														}
+													}
+												?>
 											</span>
 										</td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Foils']); ?>" name="Foils"></td>

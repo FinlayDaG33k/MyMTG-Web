@@ -31,6 +31,10 @@
 							break;
 						case 200:
 							<?= sendNotification("<strong>Hooraay!</strong><br />Our goblins returned with the news that everything went right! Some actions require you to refresh the page to see changes.","success"); ?>
+							$('#table-Wants > tbody:last-child').append('<tr><td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name='+$('input[id="addCard-Name"]').val()+'" target="_blank">'+$('input[id="addCard-Name"]').val()+'</a></td><td><span class="badge"><img src="http://www.bazaarofmagic.nl/images/editions/'+$('select[id="select"]').val()+'_c.png">'+$('select[id="select"]').val()+'</span></td><td></td><td></td><td></td><td></td></tr>');
+							$('input[id="addCard-NonFoils"]').val("0");
+							$('input[id="addCard-Foils"]').val("0");
+							$('input[id="addCard-Name"]').val("");
 							break;
 					}
 				}
@@ -116,12 +120,11 @@
 						<tr>
 							<td>
 								<div class="form-group">
-								  <input class="form-control" id="focusedInput" name="Card" placeholder="Card Name" type="text">
+								  <input class="form-control" name="Card" id="addCard-Name" placeholder="Card Name" type="text">
 								</div>
 							</td>
 							<td>
 								<div class="form-group">
-
 									<select class="form-control js-example-basic-single js-states" name="Set" id="select">
 					          <?php
 											$url = "https://mymtg-api.finlaydag33k.nl/index.php?action=listSets";
@@ -142,12 +145,12 @@
 							</td>
 							<td>
 								<div class="form-group">
-									<input class="form-control" name="Foils" type="text" value="0">
+									<input class="form-control" name="Foils" id="addCard-Foils" type="text" value="0">
 								</div>
 							</td>
 							<td>
 								<div class="form-group">
-									<input class="form-control" type="text" value="0" name="Non-Foils">
+									<input class="form-control" type="text" id="addCard-NonFoils" value="0" name="Non-Foils">
 								</div>
 							</td>
 							<td>
@@ -164,7 +167,29 @@
 								<form id="updateCard" class="form-horizontal">
 									<tr>
 										<td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name=<?= htmlentities($value['Name']); ?>" target="_blank"><?= htmlentities($value['Name']); ?></a></td>
-										<td><span class="badge"><?php if($value['Set'] != "MPS"){ ?><img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png"><?php }else{ ?><img src="http://www.bazaarofmagic.nl/images/editions/mps_kld.png"><?php } ?> <?= htmlentities($value['Set']); ?></span></td>
+										<td>
+											<span class="badge">
+												<?php
+													if(strpos($value['Set'], 'MPS:') !== FALSE){
+														$set = explode (':',$value['Set']);
+														?>
+															<img src="http://www.bazaarofmagic.nl/images/editions/mps_<?= trim(htmlentities($set[1])); ?>.png">
+														<?php
+													}else{
+														if($value['Set'] == "WPN"){
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
+															<?php
+														}else{
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+															<?php
+														}
+													}
+												?>
+												<?= htmlentities($value['Set']); ?>
+											</span>
+										</td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Foils']); ?>" name="Foils"></td>
 										<td><input class="form-control" type="text" value="<?= htmlentities($value['Non-Foils']); ?>" name="Non-Foils"></td>
 										<td>
