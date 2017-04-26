@@ -7,6 +7,9 @@
 	 $dir .= $parts[$i] . "/";
 	}
 
+	$crumbs = explode("/",$_SERVER["REQUEST_URI"]); // Make the breadcrumbs.
+	$void = array_shift($crumbs); // band-aid a little bug
+
 	if(!empty($_COOKIE['Userdata'])){
 		$cookieData = json_decode($_COOKIE['Userdata'],1);
 		$cookieData = $cookieData['message'];
@@ -41,7 +44,21 @@
 			}else{
 			    $page = 'home';
 			}
-
+			if($page !== 'error' && $page !== 'home'){
+				?>
+					<ul class="breadcrumb">
+						<?php
+							$prevcrumb = "";
+							foreach($crumbs as $crumb){
+								?>
+									<li><a href="<?= $ezServer->getProto() ."://". $server ."/" .$prevcrumb. htmlentities($crumb); ?>"><?= htmlentities(ucfirst($crumb)); ?></a></li>
+								<?php
+								$prevcrumb .= $crumb . "/";
+							}
+						?>
+					</ul>
+				<?php
+			}
 			include("pages/{$page}.php");
 			?>
 		</div>
