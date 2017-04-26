@@ -20,7 +20,7 @@
 							case 200:
 								<?= sendNotification("<strong>Login Success!</strong><br />You\'ve been successfully logged in! You will be redirected to MyMTG in a few moments!","success"); ?>
 								$.cookie("Userdata", json);
-								window.location.replace("https://mymtg.finlaydag33k.nl/?page=inventory");
+								window.location.replace("https://mymtg.finlaydag33k.nl/inventory");
 								break;
 						}
 					}

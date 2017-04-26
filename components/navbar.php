@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
-				<li><a href="?page=roadmap">Roadmap</a></li>
+				<li><a href="/roadmap">Roadmap</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -32,20 +32,20 @@
 				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
 				    <ul class="dropdown-menu" role="menu">
 							<li><a href="#">Welcome <?= htmlentities($cookieData['Username']); ?></a></li>
-							<li><a href="?page=profile&username=<?= htmlentities($cookieData['Username']); ?>">My Profile</a></li>
-							<li><a href="?page=edit-profile">Edit Profile</a></li>
+							<li><a href="/profile/<?= htmlentities($cookieData['Username']); ?>">My Profile</a></li>
+							<li><a href="/edit-profile">Edit Profile</a></li>
 							<li class="divider"></li>
-				      <li><a href="?page=inventory">My Inventory</a></li>
-							<li><a href="?page=wants">My Wants</a></li>
+				      <li><a href="/inventory">My Inventory</a></li>
+							<li><a href="/wants">My Wants</a></li>
 				      <li class="divider"></li>
-							<li><a href="?page=change-password">Change Password</a></li>
+							<li><a href="/change-password">Change Password</a></li>
 							<li class="divider"></li>
 							<li><a href="#" id="logOut">Log Out</a></li>
 				    </ul>
 				  </li>
 				<?php	}else{ ?>
-					<li><a href="?page=login">Login</a></li>
-					<li><a href="?page=register">Register</a></li>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
 				<?php } ?>
       </ul>
     </div>
