@@ -45,27 +45,32 @@
 										<tbody>
 											<?php
 									foreach($inventory as $card => $value){
+										if(($value['Foils'] + $value['Non-Foils']) > 0){
 										?>
 											<tr>
 												<td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name=<?= htmlentities($value['Name']); ?>" target="_blank"><?= htmlentities($value['Name']); ?></a></td>
 												<td>
 												<span class="badge">
 													<?php
-														if(strpos($value['Set'], 'MPS:') !== FALSE){
-															$set = explode (':',$value['Set']);
-															?>
-																<img src="http://www.bazaarofmagic.nl/images/editions/mps_<?= trim(htmlentities($set[1])); ?>.png">
-															<?php
-														}else{
-															if($value['Set'] == "WPN"){
+														if($value['Rarity'] == "Special"){
+															if(strpos($value['Set'], 'MPS:') !== FALSE){
+																$set = explode (':',$value['Set']);
+																?>
+																	<img src="http://www.bazaarofmagic.nl/images/editions/MPS_<?= trim(htmlentities($set[1])); ?>_m.png">
+																<?php
+															}elseif($value['Set'] == "pWPN"){
 																?>
 																	<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
 																<?php
-															}else{
-																?>
-																	<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
-																<?php
 															}
+														}elseif($value['Rarity'] == "Basic Land"){
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+															<?php
+														}else{
+															?>
+																<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_<?= htmlentities($value['Rarity'][0]); ?>.png">
+															<?php
 														}
 													?>
 													<?= htmlentities($value['Set']); ?>
@@ -76,6 +81,7 @@
 												</tr>
 											</form>
 										<?php
+										}
 									}
 									?>
 								</tbody>
@@ -115,21 +121,25 @@
 														<td>
 															<span class="badge">
 																<?php
-																	if(strpos($value['Set'], 'MPS:') !== FALSE){
-																		$set = explode (':',$value['Set']);
-																		?>
-																			<img src="http://www.bazaarofmagic.nl/images/editions/mps_<?= trim(htmlentities($set[1])); ?>.png">
-																		<?php
-																	}else{
-																		if($value['Set'] == "WPN"){
+																	if($value['Rarity'] == "Special"){
+																		if(strpos($value['Set'], 'MPS:') !== FALSE){
+																			$set = explode (':',$value['Set']);
+																			?>
+																				<img src="http://www.bazaarofmagic.nl/images/editions/MPS_<?= trim(htmlentities($set[1])); ?>_m.png">
+																			<?php
+																		}elseif($value['Set'] == "pWPN"){
 																			?>
 																				<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
 																			<?php
-																		}else{
-																			?>
-																				<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
-																			<?php
 																		}
+																	}elseif($value['Rarity'] == "Basic Land"){
+																		?>
+																			<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+																		<?php
+																	}else{
+																		?>
+																			<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_<?= htmlentities($value['Rarity'][0]); ?>.png">
+																		<?php
 																	}
 																?>
 																<?= htmlentities($value['Set']); ?>
@@ -166,14 +176,15 @@
 										?>
 										<table class="table table-hover" id="table-userdetails">
 											<tbody>
-										<?php
-										foreach($userdetails as $detail=> $value){
-											?>
-												<td><?= htmlentities(key($value)); ?></td>
-												<td><?= htmlentities($value['DCI']); ?></td>
-											<?php
-										}
-										?>
+												<tr>
+													<td>Name</td>
+													<td><?= htmlentities($userdetails['Name']); ?></td>
+												</tr>
+												<tr>
+													<td>DCI</td>
+													<td><?= htmlentities($userdetails['DCI']); ?></td>
+												</tr>
+											</tbody>
 									</table>
 										<?php
 									}else{

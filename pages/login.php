@@ -11,9 +11,11 @@
 						switch(data.code){
 							case 400:
 								<?= sendNotification("<strong>Invalid Captcha!</strong><br />It seems that the captcha you\'ve entered is invalid. Please try again!","danger"); ?>
+								grecaptcha.reset(); // Reload the google captcha to prevent a bug: https://github.com/FinlayDaG33k/MyMTG-Web/issues/1
 								break;
 							case 403:
 								<?= sendNotification("<strong>Invalid login credentials!</strong><br />It seems that you\'ve entered the wrong user credentials. Please try again!","danger"); ?>
+								grecaptcha.reset(); // Reload the google captcha to prevent a bug: https://github.com/FinlayDaG33k/MyMTG-Web/issues/1
 								break;
 							case 200:
 								<?= sendNotification("<strong>Login Success!</strong><br />You\'ve been successfully logged in! You will be redirected to MyMTG in a few moments!","success"); ?>
@@ -40,7 +42,7 @@
       <div class="col-lg-10">
         <input class="form-control" id="password" name="Password" placeholder="Password" type="password">
 				<br />
-				<div class="g-recaptcha" data-sitekey="6Le_3RkUAAAAADBQXnsaMdR7-HNGpuIzXSNPJMaY"></div>
+				<div id="RecaptchaField1"></div>
       </div>
     </div>
     <div class="form-group">

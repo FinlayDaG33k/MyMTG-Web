@@ -11,4 +11,10 @@
 <link rel="stylesheet" href="//<?= $dir; ?>/inc/css/animate.css" />
 
 <!-- Google is watching you! -->
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+<script type="text/javascript">
+  var onloadCallback = function() {
+    grecaptcha.render('RecaptchaField1', {'sitekey' : '6Le_3RkUAAAAADBQXnsaMdR7-HNGpuIzXSNPJMaY'});
+		grecaptcha.render('RecaptchaField2', {'sitekey' : '6Le_3RkUAAAAADBQXnsaMdR7-HNGpuIzXSNPJMaY'});
+  };
+</script>

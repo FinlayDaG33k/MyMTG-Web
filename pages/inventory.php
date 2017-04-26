@@ -4,6 +4,7 @@
 			placeholder: "Set",
 			allowClear: true
 		});
+		//$("#table-inventory").tablesorter();
 
 		$("#addCard").submit(function(event) {
 			event.preventDefault();
@@ -148,24 +149,28 @@
 										<td><a href="http://gatherer.wizards.com/Pages/Card/Details.aspx?name=<?= htmlentities($value['Name']); ?>" target="_blank"><?= htmlentities($value['Name']); ?></a></td>
 										<td>
 											<span class="badge">
-												<?php
+											<?php
+												if($value['Rarity'] == "Special"){
 													if(strpos($value['Set'], 'MPS:') !== FALSE){
 														$set = explode (':',$value['Set']);
 														?>
-															<img src="http://www.bazaarofmagic.nl/images/editions/mps_<?= trim(htmlentities($set[1])); ?>.png">
+															<img src="http://www.bazaarofmagic.nl/images/editions/MPS_<?= trim(htmlentities($set[1])); ?>_m.png">
 														<?php
-													}else{
-														if($value['Set'] == "WPN"){
-															?>
-																<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
-															<?php
-														}else{
-															?>
-																<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
-															<?php
-														}
+													}elseif($value['Set'] == "pWPN"){
+														?>
+															<img src="http://www.bazaarofmagic.nl/images/editions/wpn_c.png">
+														<?php
 													}
-												?>
+												}elseif($value['Rarity'] == "Basic Land"){
+													?>
+														<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_c.png">
+													<?php
+												}else{
+													?>
+														<img src="http://www.bazaarofmagic.nl/images/editions/<?= htmlentities($value['Set']); ?>_<?= htmlentities($value['Rarity'][0]); ?>.png">
+													<?php
+												}
+											?>
 												<?= htmlentities($value['Set']); ?>
 											</span>
 										</td>

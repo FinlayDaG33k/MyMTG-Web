@@ -23,7 +23,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
 				<li><a href="?page=roadmap">Roadmap</a></li>
-				
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
 				<li><a href="http://bit.ly/2nQX1OE" target="_blank">Feedback</a></li>
@@ -33,6 +33,7 @@
 				    <ul class="dropdown-menu" role="menu">
 							<li><a href="#">Welcome <?= htmlentities($cookieData['Username']); ?></a></li>
 							<li><a href="?page=profile&username=<?= htmlentities($cookieData['Username']); ?>">My Profile</a></li>
+							<li><a href="?page=edit-profile">Edit Profile</a></li>
 							<li class="divider"></li>
 				      <li><a href="?page=inventory">My Inventory</a></li>
 							<li><a href="?page=wants">My Wants</a></li>
