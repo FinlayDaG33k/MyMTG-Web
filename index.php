@@ -10,6 +10,8 @@
 	$crumbs = explode("/",$_SERVER["REQUEST_URI"]); // Make the breadcrumbs.
 	$void = array_shift($crumbs); // band-aid a little bug
 
+	require(DIRNAME(__FILE__) . "/slugs.php"); // load the slugs
+
 	if(!empty($_COOKIE['Userdata'])){
 		$cookieData = json_decode($_COOKIE['Userdata'],1);
 		$cookieData = $cookieData['message'];
@@ -51,7 +53,17 @@
 							$prevcrumb = "";
 							foreach($crumbs as $crumb){
 								?>
-									<li><a href="<?= $ezServer->getProto() ."://". $server ."/" .$prevcrumb. htmlentities($crumb); ?>"><?= htmlentities(ucfirst($crumb)); ?></a></li>
+									<li>
+										<a href="<?= $ezServer->getProto() ."://". $server ."/" .$prevcrumb. htmlentities($crumb); ?>">
+											<?php
+												if(array_key_exists($crumb,$slugs)){
+													echo $slugs[$crumb];
+												}else{
+													echo htmlentities(ucfirst($crumb));
+												}
+											?>
+										</a>
+									</li>
 								<?php
 								$prevcrumb .= $crumb . "/";
 							}
