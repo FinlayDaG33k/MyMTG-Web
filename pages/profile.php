@@ -176,14 +176,18 @@
 										?>
 										<table class="table table-hover" id="table-userdetails">
 											<tbody>
-												<tr>
-													<td>Name</td>
-													<td><?= htmlentities($userdetails['Name']); ?></td>
-												</tr>
-												<tr>
-													<td>DCI</td>
-													<td><?= htmlentities($userdetails['DCI']); ?></td>
-												</tr>
+												<?php if(!empty($userdetails['Name'])){ ?>
+													<tr>
+														<td>Name</td>
+														<td><?= htmlentities($userdetails['Name']); ?></td>
+													</tr>
+												<?php } ?>
+												<?php if(!empty($userdetails['DCI']) && $userdetails['DCI'] !=="0"){ ?>
+													<tr>
+														<td>DCI</td>
+														<td><?= htmlentities($userdetails['DCI']); ?></td>
+													</tr>
+												<?php } ?>
 											</tbody>
 									</table>
 										<?php
