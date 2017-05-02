@@ -15,26 +15,6 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
   </thead>
 	<tbody>
 		<tr>
-			<td>Hey babe, can I get your number? ;)</td>
-			<td>The ability to add your DCI number to your profile so you can quickly find it!</td>
-			<td>2017</td>
-			<td>
-				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: 90%"></div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>Ehm... how rare is it?</td>
-			<td>Change color of set icons based on rarity</td>
-			<td>2017</td>
-			<td>
-				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: 90%"></div>
-				</div>
-			</td>
-		</tr>
-		<tr>
 			<td>10 Users Milestone!</td>
 			<td>Get 10 Users on MyMTG!</td>
 			<td>04-2017</td>
@@ -60,11 +40,20 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 			<td>2017</td>
 			<td>
 				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: 20%"></div>
+				</div>
+			</td>
+		</tr>
+    <tr>
+			<td>Got some decks?</td>
+			<td>The ability to add decklists to your profile</td>
+			<td>05-2017</td>
+			<td>
+				<div class="progress">
 					<div class="progress-bar progress-bar-success" style="width: 0%"></div>
 				</div>
 			</td>
 		</tr>
-
 		<tr>
 			<td>Own Identity</td>
 			<td>Get a domain, specifically for MyMTG</td>
@@ -72,6 +61,26 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 			<td>
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" style="width: 0%"></div>
+				</div>
+			</td>
+		</tr>
+    <tr>
+			<td>Ehm... how rare is it?</td>
+			<td>Change color of set icons based on rarity</td>
+			<td>2017</td>
+			<td>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: 90%"></div>
+				</div>
+			</td>
+		</tr>
+    <tr>
+			<td>Hey babe, can I get your number? ;)</td>
+			<td>The ability to add your DCI number to your profile so you can quickly find it!</td>
+			<td>2017</td>
+			<td>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: 100%"></div>
 				</div>
 			</td>
 		</tr>
