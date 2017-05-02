@@ -27,6 +27,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 				<li><a href="http://bit.ly/2nQX1OE" target="_blank">Feedback</a></li>
+				<li><a href="https://github.com/FinlayDaG33k/MyMTG-Web" target="_blank">GitHub</a></li>
 				<?php if(!empty($cookieData)){ ?>
 					<li class="dropdown">
 				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
