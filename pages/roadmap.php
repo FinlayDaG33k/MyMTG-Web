@@ -34,16 +34,6 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<td>What trade? THAT TRADE!</td>
-			<td>A little ledger for trades, so you can keep track of when you traded what, what you got for it, and the status!</td>
-			<td>2017</td>
-			<td>
-				<div class="progress">
-					<div class="progress-bar progress-bar-success" style="width: 20%"></div>
-				</div>
-			</td>
-		</tr>
     <tr>
 			<td>Got some decks?</td>
 			<td>The ability to add decklists to your profile</td>
@@ -61,6 +51,16 @@ The "Expected When" column might not be concrete, but because it's a roeadmap, I
 			<td>
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" style="width: 0%"></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>What trade? THAT TRADE!</td>
+			<td>A little ledger for trades, so you can keep track of when you traded what, what you got for it, and the status!</td>
+			<td>2017</td>
+			<td>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" style="width: 90%"></div>
 				</div>
 			</td>
 		</tr>

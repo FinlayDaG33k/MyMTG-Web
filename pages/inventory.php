@@ -1,9 +1,5 @@
 <script>
 	$(document).ready(function() {
-		$(".js-example-basic-single").select2({
-			placeholder: "Set",
-			allowClear: true
-		});
 		//$("#table-inventory").tablesorter();
 
 		$("#addCard").submit(function(event) {
@@ -105,7 +101,7 @@
 							</td>
 							<td>
 								<div class="form-group">
-									<select class="form-control js-example-basic-single js-states" name="Set" id="select">
+									<select class="form-control selectpicker" data-live-search="true" name="Set" id="select">
 					          <?php
 											$url = "https://mymtg-api.finlaydag33k.nl/index.php?action=listSets";
 											$ch = curl_init();

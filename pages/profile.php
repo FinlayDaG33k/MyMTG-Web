@@ -15,23 +15,62 @@
 	$inventory = $result['Inventory'];
 	$wants = $result['Wants'];
 	$userdetails = $result['UserDetails'];
-	?>
+	$trades = $result['Trades'];
+?>
 
 <script>
-	$(document).ready(function()  {
+	$(document).ready(function(){
     $("#table-haves").tablesorter();
 		$("#table-wants").tablesorter();
+
+		$('#Inventory-body').on('shown.bs.collapse', function() {
+			$("#Inventory").find('i').toggleClass("down");
+  	});
+
+		$('#Inventory-body').on('hidden.bs.collapse', function() {
+			$("#Inventory").find('i').toggleClass("down");
+  	});
+
+		$('#Wants-body').on('hidden.bs.collapse', function() {
+			$("#Wants").find('i').toggleClass("down");
+  	});
+
+		$('#Wants-body').on('hidden.bs.collapse', function() {
+			$("#Wants").find('i').toggleClass("down");
+  	});
+
+		$('#Userdetails-body').on('hidden.bs.collapse', function() {
+			$("#Userdetails").find('i').toggleClass("down");
+		});
+
+		$('#Userdetails-body').on('hidden.bs.collapse', function() {
+			$("#Userdetails").find('i').toggleClass("down");
+		});
+
+
+		$('#Trades-body').on('hidden.bs.collapse', function() {
+			$("#Trades").find('i').toggleClass("down");
+		});
+		$('#Trades-body').on('hidden.bs.collapse', function() {
+			$("#Trades").find('i').toggleClass("down");
+		});
   });
 </script>
 		<h2>Profile of <?= htmlentities($_GET['username']); ?>
 		<hr>
 		<div class="row">
 			<div class="col-md-4">
-				<div class="panel panel-primary">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Inventory</h3>
-				  </div>
-				  <div class="panel-body">
+				<div class="panel panel-primary" id="Inventory">
+					<div class="panel-heading">
+		        <div class="panel-title pull-left">
+		          Inventory
+		        </div>
+		        <div class="panel-title pull-right" data-toggle="collapse" data-target="#Inventory-body">
+							<i class="fa fa-chevron-right rotate" aria-hidden="true"></i>
+						</div>
+		        <div class="clearfix"></div>
+	    		</div>
+				  <div class="panel-body collapse" id="Inventory-body">
 								<?php
 								if(!empty($inventory)){
 									?>
@@ -97,11 +136,17 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Wants</h3>
-					  </div>
-					  <div class="panel-body">
+					<div class="panel panel-primary" id="Haves">
+						<div class="panel-heading">
+			        <div class="panel-title pull-left">
+			          Haves
+			        </div>
+			        <div class="panel-title pull-right" data-toggle="collapse" data-target="#Haves-body">
+								<i class="fa fa-chevron-right rotate" aria-hidden="true"></i>
+							</div>
+			        <div class="clearfix"></div>
+		    		</div>
+					  <div class="panel-body collapse" id="Haves-body">
 									<?php
 									if(!empty($wants)){
 										?>
@@ -164,13 +209,18 @@
 					  </div>
 					</div>
 				</div>
-				<div class="row">
 					<div class="col-md-4">
-						<div class="panel panel-primary">
-						  <div class="panel-heading">
-						    <h3 class="panel-title">User Details</h3>
-						  </div>
-						  <div class="panel-body">
+						<div class="panel panel-primary" id="Userdetails">
+							<div class="panel-heading">
+				        <div class="panel-title pull-left">
+				          User Details
+				        </div>
+				        <div class="panel-title pull-right" data-toggle="collapse" data-target="#Userdetails-body">
+									<i class="fa fa-chevron-right rotate" aria-hidden="true"></i>
+								</div>
+				        <div class="clearfix"></div>
+			    		</div>
+						  <div class="panel-body collapse" id="Userdetails-body">
 								<?php
 									if(!empty($userdetails)){
 										?>
@@ -201,7 +251,111 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-primary" id="Trades">
+							<div class="panel-heading">
+								<div class="panel-title pull-left">
+									Trades
+								</div>
+								<div class="panel-title pull-right" data-toggle="collapse" data-target="#Trades-body">
+									<i class="fa fa-chevron-right rotate" aria-hidden="true"></i>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-body collapse" id="Trades-body">
+								<?php
+									if(!empty($trades)){
+										?>
+										<table class="table table-hover" id="table-trade">
+											<thead>
+												<th>Trade ID</th>
+												<th>Gives</th>
+												<th>Gets</th>
+												<th>Date Created</th>
+												<th>last Updated</th>
+												<th>Status</th>
+											</thead>
+											<tbody>
+												<?php
+													foreach($trades as $trade => $value){
+														?>
+														<tr>
+															<td><?= htmlentities($value['ID']); ?></td>
+															<td>
+																<?php
+																	foreach($value['Cards']['Gives'] as $card => $amount){
+																		echo $amount . "x " . $card . "<br />";
+																	}
+																?>
+															</td>
+															<td>
+																<?php
+																	foreach($value['Cards']['Gets'] as $card => $amount){
+																		echo $amount . "x " . $card . "<br />";
+																	}
+																?>
+															</td>
+															<td>
+																<?= htmlentities($value['Date_Created']); ?>
+															</td>
+															<td>
+																<?= htmlentities($value['Last_Updated']); ?>
+															</td>
+															<td>
+																<?php
+																	switch($value['Status']){
+																		case "Awaiting":
+																			?>
+																				Awaiting Response
+																			<?php
+																			break;
+																		case "Ready":
+																			?>
+																				Ready for shipment
+																			<?php
+																			break;
+																		case "Shipped":
+																			?>
+																				Shipped
+																			<?php
+																			break;
+																		case "Real-Life Trade":
+																			?>
+																				Real-Life Trade
+																			<?php
+																			break;
+																		case "Complete":
+																			?>
+																				Complete
+																			<?php
+																			break;
+																		case "Canceled":
+																			?>
+																				Canceled
+																			<?php
+																			break;
+																	}
+																?>
+															</td>
+														</tr>
+														<?php
+													}
+												?>
+											</tbody>
+									</table>
+										<?php
+									}else{
+										?>
+										Nothing Here...
+										<?php
+									}
+								?>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
 			<?php
 				}else{
 					?>

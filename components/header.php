@@ -5,8 +5,8 @@
 <script src="//<?= $server; ?>/inc/js/jquery.cookie.js"></script>
 <script src="//<?= $server; ?>/inc/js/jquery.tablesorter.min.js"></script>
 
-<link rel="stylesheet" href="//<?= $server; ?>/inc/css/select2.css" />
-<script src="//<?= $server; ?>/inc/js/select2.min.js"></script>
+<link rel="stylesheet" href="//<?= $server; ?>/inc/css/bootstrap-select.min.css" />
+<script src="//<?= $server; ?>/inc/js/bootstrap-select.js"></script>
 <script src="//<?= $server; ?>/inc/js/bootstrap.notify.js"></script>
 <link rel="stylesheet" href="//<?= $server; ?>/inc/css/animate.css" />
 
@@ -18,3 +18,5 @@
 		grecaptcha.render('RecaptchaField2', {'sitekey' : '6Le_3RkUAAAAADBQXnsaMdR7-HNGpuIzXSNPJMaY'});
   };
 </script>
+
+<script src="//<?= $server; ?>/inc/js/fontawesome.js"></script>

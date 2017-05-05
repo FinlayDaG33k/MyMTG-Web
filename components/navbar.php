@@ -38,6 +38,7 @@
 							<li class="divider"></li>
 				      <li><a href="/inventory">My Inventory</a></li>
 							<li><a href="/wants">My Wants</a></li>
+							<li><a href="/trade">My Trades</a></li>
 				      <li class="divider"></li>
 							<li><a href="/change-password">Change Password</a></li>
 							<li class="divider"></li>
